@@ -20,3 +20,63 @@ table {
 td, th {
     border: 0px solid white;
 }
+
+.buttoned {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgb(220 0 0 / 100%);
+    background-image: linear-gradient(to top left,
+            rgb(0 0 0 / 20%),
+            rgb(0 0 0 / 20%) 30%,
+            rgb(0 0 0 / 0%));
+    box-shadow:
+        inset 2px 2px 3px rgb(255 255 255 / 60%),
+        inset -2px -2px 3px rgb(0 0 0 / 60%);
+}
+
+.outlined {
+    outline-style: dotted
+}
+
+.rcorners3 {
+    border-radius: 25px;
+    border-color: white;
+    background-position: center top;
+    background-repeat: repeat;
+    padding: 20px;
+    width: 80%;
+    height: 20%;
+}
+
+.rounded-border {
+    border: 2px solid white;
+    /* White border */
+    border-radius: 15px;
+    /* Rounded corners */
+    padding: 20px;
+    /* Space inside the div */
+    background-color: #333;
+    /* Dark background for contrast */
+    color: white;
+    /* Text color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Optional: Shadow for better visual effect */
+    width: 80%;
+    /* Optional: Width of the div */
+    text-align: center;
+    /* Center align text */
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: contents;
+}

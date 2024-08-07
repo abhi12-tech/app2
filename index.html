@@ -7,50 +7,14 @@
     <link rel="stylesheet" href="styles.css">
     <script src="app.js" defer> </script>
 </head>
-<body id="root" onload="initialize()">
+<body id="root">
+    <div id="soy_product">
     <table class="center">
-        <tr width="100%">
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
         <tr>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td align="center"><h2>Refresh What Matters !</h2></td>
             <td>&nbsp;</td>
         </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td align="center"><h2>Refresh What Matters</h2></td>
-            <td>&nbsp;</td>
-        </tr>
-
-        <!-- <tr>
-            
-            <td>
-                <table class="center">
-                    <tr align="center">
-                        <td>
-                            <table class="center">
-                                <img src="./images/hu_mod.png" width="80" , height="200" />
-                            </table>
-                        </td>
-                    </tr>
-
-                </table>
-            </td>
-        </tr> -->
-       
     </table>
 
     <table class="center">
@@ -60,43 +24,85 @@
                     <tr>
                         <td align="center">
                             <div id="prod_images">
-                                <img src="./images/canned_1.png" width="80" height="200" /> &nbsp;
-                                <img src="./images/canned_2.png" width="80" height="200" /> &nbsp;
-                                <img src="./images/canned_3.png" width="80" height="200" />
+                                <img src="./images/soy-milk.webp" alt="Soy Milk" /> 
                             </div>
                         </td>
                     </tr>
     
                 </table>
             <td>
-    
         </tr>
     </table>
 
+
     <table class="center">
-        <tr>
-            <td width="30%">&nbsp;</td>
+            <td width="20%">&nbsp;</td>
             <td>
-                <table align="center">
-                    <tr>
+
                         <td align="left">
                             <p>
                             <div id="prod_description">
-                                "Making great food as approachable and easy to fix is what makes Yeo’s Canned Food a success with its recipe deeply
-                                seeped in traditions and made from the finest ingredients. Yeo’s Canned Food creates taste that will satisfy food
-                                lovers!"
+                                <u><b>Yeo’s signature beverage</b> </u>range of well-being, wholesomeness and wisdom. Brewed from time tested recipe, with all its
+                                natural goodness of premium soy.
                             </div>
                             </p>
                         </td>
-                    </tr>
-    
-                </table>
             <td>
             <td width="20%">&nbsp;</td>
     
         </tr>
     </table>
-  
-   
+    </div>
+    <div id="quiz_start">
+        <table class="center">
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td align="right">
+                        <b>Do you want to play quiz! </b>&nbsp;
+                        <input type="button" id="quiz_start" value="Start Quiz!" class="buttoned"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="qa_div" class="hide">
+    <div class="rounded-border">
+        <table class="center">
+            <tr>
+                <td align="left">
+                    <h2>Important Instructions:</h2>
+                    <ol>
+                        <li>
+                            There is negative marking. Every correct answer will be awarded +1 & incorret one with -1.
+                        </li>
+                        <li>
+                            There are total 3 questions.
+                        </li>
+                        <li>
+                            In case of same score, winner will be decided based on time taken to answer all the questions.
+                        </li>
+                    </ol>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br/><br/>
+    <div class="rounded-border">
+        <table class="center">
+            <tr>
+                <td align="center" width="80%"> 
+                    <div id="question">
+                        This area is for question
+                    </div>
+                    <div id="ans_confirm">
+                        This area is for answer
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 </body>
 </html>
