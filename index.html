@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="app.js" defer> </script>
 </head>
-<body id="root">
+<body id="root" onload="initialize()">
     <div id="soy_product">
     <table class="center">
         <tr>
@@ -38,7 +38,6 @@
     <table class="center">
             <td width="20%">&nbsp;</td>
             <td>
-
                         <td align="left">
                             <p>
                             <div id="prod_description">
@@ -64,7 +63,7 @@
                 <td>&nbsp;</td>
                 <td align="right">
                         <b>Do you want to play quiz! </b>&nbsp;
-                        <input type="button" id="quiz_start" value="Start Quiz!" class="buttoned"/>
+                        <input type="button" id="quiz_start" value="Start Quiz!" class="red_button"/>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -81,7 +80,7 @@
                             There is negative marking. Every correct answer will be awarded +1 & incorret one with -1.
                         </li>
                         <li>
-                            There are total 3 questions.
+                            There are total 4 questions.
                         </li>
                         <li>
                             In case of same score, winner will be decided based on time taken to answer all the questions.
@@ -95,14 +94,56 @@
     <div class="rounded-border">
         <table class="center">
             <tr>
-                <td align="center" width="80%"> 
-                    <div id="question">
-                        This area is for question
+                <td align="left" width="60%" border="1px"> 
+                    <div id="q_div">
+                        <legend>Sample Question:</legend> <br/>
                     </div>
-                    <div id="ans_confirm">
-                        This area is for answer
+                    <div id="opt_div">
+                        <label>
+                            <input type="radio" name="q1" value="opt1" id="opt1"/>
+                            SampleOpt1
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="opt2" id="opt2"/>
+                            SampleOpt2
+                        </label>
                     </div>
+                    <div id="q_btn_div">
+                        <input type="button" value="Submit" id="sub_ans" class="red_button"/>
+                    </div>
+                </td>
+                <td align="top">
+                    <div id="show_result" class="hide">
+                        Bravo! Your answer is correct. +1
+                    </div>
+                    <!-- <div id="wrong_ans_conf_div" class="hide">
+                        Oops! Your answer is <u>incorrect</u> -1.
+                    </div> -->
+                    <div id="error_div" class="hide">
+                        <b><span color='red'>Please select an option.</span></b>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br/>
+    <div id="footer">
+        <table border="0px"> 
+            <tr>
+                <td width="1px" align="left">
+                    <div id="prev_q">
+                        <a href="#" onclick="prev_question(); return false;" class="href-primary">
+                            &lt;&lt;
+                        </a>
+                    </div>
+                <td>
 
+                <td>
+                    <div width="10px" id="next_q" align="left">
+                       <a href="#" onclick="next_question(); return false;" class="href-primary">
+                          &gt;&gt;
+                       </a>
+                    </div>
                 </td>
             </tr>
         </table>
