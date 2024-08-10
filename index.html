@@ -70,14 +70,14 @@
         </table>
     </div>
     <div id="qa_div" class="hide">
-    <div class="rounded-border">
+    <div id="inst_div" class="rounded-border">
         <table class="center">
             <tr>
                 <td align="left">
                     <h2>Important Instructions:</h2>
                     <ol>
                         <li>
-                            There is negative marking. Every correct answer will be awarded +1 & incorret one with -1.
+                            There is negative marking. +2 on every correct answer and -1 on wrong one. 
                         </li>
                         <li>
                             There are total 4 questions.
@@ -90,8 +90,32 @@
             </tr>
         </table>
     </div>
-    <br/><br/>
-    <div class="rounded-border">
+    <br/>
+    <div id="timer_div" class="hide">
+        <table>
+            <tr class="th_wide">
+                <td>
+                    Timer&nbsp;&nbsp;
+                </td>
+                <td>
+                    <div id="minutes">00</div>
+                </td>
+                <td>
+                    :
+                </td>
+                <td>
+                    <div id="seconds">00</div>
+                </td>
+                <td>
+                    :
+                </td>
+                <td>
+                    <div id="milliseconds">000</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="q_opt_div" class="rounded-border">
         <table class="center">
             <tr>
                 <td align="left" width="60%" border="1px"> 
@@ -116,9 +140,6 @@
                     <div id="show_result" class="hide">
                         Bravo! Your answer is correct. +1
                     </div>
-                    <!-- <div id="wrong_ans_conf_div" class="hide">
-                        Oops! Your answer is <u>incorrect</u> -1.
-                    </div> -->
                     <div id="error_div" class="hide">
                         <b><span color='red'>Please select an option.</span></b>
                     </div>
@@ -127,7 +148,7 @@
         </table>
     </div>
     <br/>
-    <div id="footer">
+    <div id="footer_div">
         <table border="0px"> 
             <tr>
                 <td width="1px" align="left">
@@ -138,12 +159,36 @@
                     </div>
                 <td>
 
-                <td>
-                    <div width="10px" id="next_q" align="left">
+                <td width="10px" align="left"> 
+                    <div  id="next_q">
                        <a href="#" onclick="next_question(); return false;" class="href-primary">
                           &gt;&gt;
                        </a>
                     </div>
+                </td>
+
+                <td align="right">
+                    <div id="final_submit_div">
+                        &nbsp;&nbsp;&nbsp;
+                    </div>
+                </td>
+                <td align="right">
+                    <div id="final_submit_div">
+                        <input type="button" value="Final Submit" id="btn_final_sub" class="red_button" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br/><br/>
+</div>
+
+<div id="final_result_div" class="hide">
+    <div class="rounded-border">
+        <table class="center">
+            <tr>
+                <td width="100%" align="center">
+                    <div id='show_fin_result'><h2>Your Final Result: </h2></div>
                 </td>
             </tr>
         </table>

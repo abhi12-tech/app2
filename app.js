@@ -1,6 +1,6 @@
 var index;
 initialize = () => {
-     index = 1;
+     index = 0;
 };
 
 const _dirty = {
@@ -17,7 +17,7 @@ const _wrong_dirty = {
     4: "Taylor Swift"
 };
 
-const pos_mark = 1;
+const pos_mark = 2;
 const neg_mark = -1;
 
 let marks_obtained = {
@@ -52,13 +52,6 @@ const quiz = {
 
 const btn_sub_ans = document.getElementById("sub_ans");
 
-// const wantQuiz = () => {
-//     result = confirm('Do you want to start the quiz?')
-//     const customerName = prompt("Please enter your name")
-    
-//     // if(!result) return;
-// }
-
 const hideHomeComps = () => {
     document.getElementById("soy_product").classList.add('hide');
     document.getElementById("quiz_start").classList.add('hide');
@@ -73,8 +66,10 @@ const getRequiredDivs = () => {
 
 const showQuiz = () => {
 
-    if(index === 1) {
+    if(index === 0) {
         hideHomeComps();
+        showTimer();
+        index = index + 1;
         // result = confirm('Do you want to start the quiz?');
         // if(!result) return;
     }
@@ -91,7 +86,7 @@ const showQuiz = () => {
 }
 
 const getHTMLLegend = (quest, ind) => {
-    return "<legend> Question "+ind+": "+ quest +"</legend> <br/>"
+    return "<legend>"+ind+". "+ quest +"</legend> <br/>"
 }
 
 const getHTMLOptions = (options) => {
@@ -166,7 +161,6 @@ const enable_radio_options = () => {
 
 const assign_mark = (ans_choosen) => {
     if(ans_choosen === _dirty[index]) {
-            console.log('answer is correct');
             if(!marks_obtained[index]) {
                 marks_obtained[index] = pos_mark;
                 show_result('show_result', ans_choosen, true)
@@ -177,15 +171,14 @@ const assign_mark = (ans_choosen) => {
                 show_result('show_result', ans_choosen, false)
             }
         }
-    // console.log("marks_obtained: "+JSON.stringify(marks_obtained));
 }
 
 const show_result = (div_id, ans, is_correct) => {
    const result_div = document.getElementById(div_id);
    if(is_correct) {
-    result_div.innerHTML = "Bravo! '"+ans+"' is <b><u>correct</u></b> option. +1"
+    result_div.innerHTML = "Bravo! '"+ans+"' is <b><u>correct</u></b> option. +"+pos_mark;
    } else {
-    result_div.innerHTML = "Oops! '"+ans+"' is <b><u>incorrect</u></b> option. -1"
+    result_div.innerHTML = "Oops! '"+ans+"' is <b><u>incorrect</u></b> option. "+neg_mark;
    }
    result_div.classList.remove('hide');
    result_div.classList.add('show');
@@ -198,11 +191,10 @@ const hide_result = (div_id) => {
 }
 
 const next_question = () => {
-    if(index >= 4) {
+    if(index >= Object.keys(quiz).length) {
         return;
     }
     index = index + 1;
-    console.log("Index: "+index+" Marks: "+JSON.stringify(marks_obtained));
     if(!marks_obtained[index]) {
         hide_result('show_result');
         enable_radio_options();
@@ -221,7 +213,6 @@ const prev_question = () => {
         return;
     }
     index = index - 1;
-    // console.log("Index: "+index+" Marks: "+JSON.stringify(marks_obtained));
     if(!marks_obtained[index]) {
         hide_result('show_result');
         enable_radio_options();
@@ -235,6 +226,84 @@ const prev_question = () => {
     showQuiz();
 }
 
+const hide_div = (div_id) => {
+    const div = document.getElementById(div_id);
+    div.classList.remove('show');
+    div.classList.add('hide');
+}
+
+const show_div = (div_id) => {
+    const div = document.getElementById(div_id);
+    div.classList.add('show');
+    div.classList.remove('hide');
+}
+
+var totalSeconds = 0;
+var totalMilliSeconds = 0;
+const showTimer = () => {
+    setTime();
+    setInterval(setTime, 1); //call at every milli second
+}
+
+
+function setTime() {
+    const timer_div = document.getElementById("timer_div");
+    timer_div.classList.remove('hide');
+    if(!timer_div.classList.contains('show')) {
+        timer_div.classList.add('show');
+    }
+    const minutesLabel = document.getElementById("minutes");
+    const secondsLabel = document.getElementById("seconds");
+    const milliSecondsLabel = document.getElementById("milliseconds");
+    ++totalMilliSeconds;
+    totalSeconds = parseInt(totalMilliSeconds / 1000);
+    secondsLabel.innerHTML = pad(totalSeconds % 60);
+    minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+    milliSecondsLabel.innerHTML = padMilli(totalMilliSeconds % 1000);
+}
+
+function pad(val) {
+  const valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+
+function padMilli(val) {
+  const valString = val + "";
+  if (valString.length < 3) {
+    if(valString.length < 2) {
+        return "00" + valString;
+    }
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+
+
+const final_submit = () => {
+    hide_div('qa_div');
+    
+    let final_score = 0;
+    Object.values(marks_obtained).forEach(value => {
+        final_score += value;
+    })
+   
+    const show_fin_result = document.getElementById('show_fin_result');   
+    
+
+    const minutesLabel = document.getElementById("minutes");
+    const secondsLabel = document.getElementById("seconds");
+    const milliSecondsLabel = document.getElementById("milliseconds");
+    const timeTaken = minutesLabel.textContent+":"+ secondsLabel.textContent+":"+milliSecondsLabel.textContent;
+    hide_div('timer_div'); 
+    show_fin_result.innerHTML = "<h2>Congratulations! </h2><h3>You scored: "+final_score +" </h3> In ["+timeTaken+"] (mm:ss:ms)";
+    show_div('final_result_div');
+}
+
 const elem = document.getElementById("quiz_start");
 elem.addEventListener("click", showQuiz)
 elem.addEventListener("touchstart", showQuiz)
@@ -242,3 +311,7 @@ elem.addEventListener("touchstart", showQuiz)
 
 btn_sub_ans.addEventListener("click", submitAns)
 btn_sub_ans.addEventListener("touchstart", submitAns)
+
+const btn_final_sub = document.getElementById("btn_final_sub");
+btn_final_sub.addEventListener("click", final_submit)
+btn_final_sub.addEventListener("touchstart", final_submit)
