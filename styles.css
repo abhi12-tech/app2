@@ -23,9 +23,9 @@ td, th {
 
 .red_button {
     border: 0;
-    line-height: 1.5;
+    line-height: 2.5;
     padding: 0 20px;
-    font-size: 0.8rem;
+    font-size: 1rem;
     text-align: center;
     color: #fff;
     text-shadow: 1px 1px 1px #000;
