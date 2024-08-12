@@ -119,6 +119,10 @@ const submitAns = (event) => {
     disable_button_sub_ans();
     disable_radio_options();
     assign_mark(selectedValue);
+    setTimeout(next_question,2000);
+    if(Object.keys(marks_obtained).length === Object.keys(quiz).length) {
+        setTimeout(final_submit, 1000);
+    }
 }
 
 const disable_button_sub_ans = () => {
@@ -312,6 +316,6 @@ elem.addEventListener("touchstart", showQuiz)
 btn_sub_ans.addEventListener("click", submitAns)
 btn_sub_ans.addEventListener("touchstart", submitAns)
 
-const btn_final_sub = document.getElementById("btn_final_sub");
-btn_final_sub.addEventListener("click", final_submit)
-btn_final_sub.addEventListener("touchstart", final_submit)
+// const btn_final_sub = document.getElementById("btn_final_sub");
+// btn_final_sub.addEventListener("click", final_submit)
+// btn_final_sub.addEventListener("touchstart", final_submit)
